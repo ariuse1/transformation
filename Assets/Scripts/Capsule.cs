@@ -9,14 +9,13 @@ public class Capsule : MonoBehaviour
     private Vector3 _targetLocale;
     private float _pathTime;    
 
-    void Start()
-    {
-        Transform transform = GetComponent<Transform>();
+    private void Start()
+    {    
         _startLocale = transform.localScale;
         _targetLocale = _startLocale * _rateIncrease;
     }
-  
-    void Update()
+
+    private void Update()
     {
         if (transform.localScale == _targetLocale)
         {
@@ -26,8 +25,7 @@ public class Capsule : MonoBehaviour
             _pathTime = 0;
         }
 
-        _pathTime += Time.deltaTime;
-        
+        _pathTime += Time.deltaTime;        
         transform.localScale = Vector3.Lerp(_startLocale, _targetLocale, _pathTime / _pathRunningTime); 
     }
 }
